@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rfc docName="draft-sample-error-00" category="info" submissionType="IETF"
+    ipr="trust200902">
+    <front>
+        <title>Sample RFC Document (Error)</title>
+        <author fullname="John Doe" initials="J." surname="Doe">
+            <organization>Example Organization</organization>
+            <address>
+                <email>john.doe@example.org</email>
+            </address>
+        </author>
+        <date year="2025" />
+        <abstract>
+            <t>This is an RFC XML v3 document that will generate errors.</t>
+        </abstract>
+    </front>
+    <middle>
+        <section anchor="intro">
+            <name>Introduction</name>
+            <t>This document demonstrates RFC XML v3 structure with an invalid
+                cross-reference: <xref target="NONEXISTENT" />.</t>
+        </section>
+    </middle>
+    <back>
+        <references>
+            <name>Normative References</name>
+            <reference anchor="RFC7991"
+                target="https://www.rfc-editor.org/info/rfc7991">
+                <front>
+                    <title>The "xml2rfc" Version 3 Vocabulary</title>
+                    <author fullname="Paul Hoffman" initials="P."
+                        surname="Hoffman" />
+                    <date year="2016" month="December" />
+                </front>
+                <seriesInfo name="RFC" value="7991" />
+            </reference>
+        </references>
+    </back>
+</rfc>

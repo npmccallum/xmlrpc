@@ -1,0 +1,59 @@
+{
+  "name": "xml2rfc",
+  "displayName": "xml2rfc Preview",
+  "description": "Preview RFC XML files as HTML and see xml2rfc warnings and errors in VS Code.",
+  "version": "1.0.0",
+  "publisher": "npmccallum",
+  "license": "MIT",
+  "homepage": "https://marketplace.visualstudio.com/items?itemName=npmccallum.xml2rfc",
+  "bugs": {
+    "url": "https://github.com/npmccallum/xmlrpc/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/npmccallum/xmlrpc.git"
+  },
+  "engines": {
+    "vscode": ">=1.75.0"
+  },
+  "galleryBanner": {
+    "color": "#1e1e1e",
+    "theme": "dark"
+  },
+  "categories": [
+    "Formatters"
+  ],
+  "keywords": [
+    "xml2rfc",
+    "rfc",
+    "xml",
+    "preview",
+    "html",
+    "ietf"
+  ],
+  "activationEvents": [
+    "onLanguage:xml"
+  ],
+  "main": "extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "xml2rfc.preview",
+        "title": "Preview with xml2rfc",
+        "icon": "$(preview)"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "xml2rfc.preview",
+          "when": "resourceLangId == xml",
+          "group": "navigation@100"
+        }
+      ]
+    }
+  },
+  "dependencies": {
+    "@xmldom/xmldom": "^0.9.8"
+  }
+}

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rfc docName="draft-sample-malformed-00" category="info" submissionType="IETF"
+    ipr="trust200902">
+    <front>
+        <title>Sample RFC Document (Malformed)</title>
+        <author fullname="John Doe" initials="J." surname="Doe">
+            <organization>Example Organization</organization>
+            <address>
+                <email>john.doe@example.org</email>
+            </address>
+        </author>
+        <date year="2025" />
+        <abstract>
+            <t>This document has RFC-specific validation issues that will cause
+                xml2rfc to report errors while still being valid XML.</t>
+        </abstract>
+    </front>
+    <middle>
+        <!-- Valid XML but invalid RFC structure -->
+        <section>
+            <!-- Missing required name element -->
+            <t>Section without a name element</t>
+        </section>
+
+        <section anchor="invalid-refs">
+            <name>Invalid References</name>
+            <t>This section contains malformed references:</t>
+            <references>
+                <reference> <!-- Missing required anchor attribute -->
+                    <front>
+                        <title>Invalid Reference</title>
+                    </front>
+                </reference>
+                <reference anchor="RFC9999">
+                    <!-- Missing required front element -->
+                    <seriesInfo name="RFC" value="9999" />
+                </reference>
+            </references>
+        </section>
+
+        <section anchor="bad-elements">
+            <name>Invalid Elements</name>
+            <t>This section contains improperly placed elements:</t>
+            <author> <!-- Author not allowed in middle -->
+                <organization>Test Org</organization>
+            </author>
+        </section>
+    </middle>
+    <back>
+        <references>
+            <name>References</name>
+            <reference anchor="RFC2119">
+                <front>
+                    <title>Key words for use in RFCs to Indicate Requirement
+                        Levels</title>
+                    <author initials="S." surname="Bradner" />
+                </front>
+                <seriesInfo name="RFC" value="2119" />
+            </reference>
+        </references>
+    </back>
+</rfc>

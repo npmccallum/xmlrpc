@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rfc docName="draft-sample-good-00" category="info" submissionType="IETF"
+    ipr="trust200902">
+    <front>
+        <title>Sample RFC Document (Good)</title>
+        <author fullname="John Doe" initials="J." surname="Doe">
+            <organization>Example Organization</organization>
+            <address>
+                <email>john.doe@example.org</email>
+            </address>
+        </author>
+        <date year="2025" />
+        <abstract>
+            <t>This is a valid RFC XML v3 document with no errors or warnings.</t>
+        </abstract>
+    </front>
+    <middle>
+        <section anchor="intro">
+            <name>Introduction</name>
+            <t>This document demonstrates a clean RFC XML v3 structure,
+                following the vocabulary defined in <xref target="RFC7991" />.</t>
+        </section>
+    </middle>
+    <back>
+        <references>
+            <name>Normative References</name>
+            <reference anchor="RFC7991"
+                target="https://www.rfc-editor.org/info/rfc7991">
+                <front>
+                    <title>The "xml2rfc" Version 3 Vocabulary</title>
+                    <author fullname="Paul Hoffman" initials="P."
+                        surname="Hoffman" />
+                    <date year="2016" month="December" />
+                </front>
+                <seriesInfo name="RFC" value="7991" />
+            </reference>
+        </references>
+    </back>
+</rfc>
