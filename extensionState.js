@@ -31,12 +31,15 @@ class ExtensionState {
     const uri = document.uri.toString();
 
     if (!this.documents.has(uri)) {
-      this.documents.set(
-        uri,
-        new DocumentState(document, (doc, state) =>
-          this._scheduleProcessing(doc, state)
-        )
+      const state = new DocumentState(document, (doc, state) =>
+        this._scheduleProcessing(doc, state)
       );
+      this.documents.set(uri, state);
+
+      // Process immediately for new documents, just like preview button does
+      if (state.needsProcessing()) {
+        this._scheduleProcessing(document, state);
+      }
     }
 
     return this.documents.get(uri);

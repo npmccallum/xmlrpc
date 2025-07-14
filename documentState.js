@@ -40,8 +40,9 @@ class DocumentState {
     // Callback for triggering processing
     this._onProcessingNeeded = onProcessingNeeded;
 
-    // Initialize from document
-    this.updateFromDocument(document);
+    // Initialize document state without triggering processing
+    // ExtensionState will handle scheduling processing appropriately
+    this._initializeFromDocument(document);
   }
 
   /**
@@ -203,6 +204,19 @@ class DocumentState {
     } catch (e) {
       return { isValid: false, isRfc: false, parsedDoc: null };
     }
+  }
+
+  /**
+   * Initializes document state without triggering processing
+   * @param {vscode.TextDocument} document - The document
+   * @private
+   */
+  _initializeFromDocument(document) {
+    const currentContent = document.getText();
+    this._lastContent = currentContent;
+    this._lastModified = Date.now();
+    this._parseAndComputeState(currentContent);
+    this._invalidateCache();
   }
 
   /**
