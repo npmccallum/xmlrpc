@@ -2,7 +2,7 @@
   "name": "xml2rfc",
   "displayName": "xml2rfc Preview",
   "description": "Preview RFC XML files as HTML and see xml2rfc warnings and errors in VS Code.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "npmccallum",
   "license": "MIT",
   "homepage": "https://marketplace.visualstudio.com/items?itemName=npmccallum.xml2rfc",
