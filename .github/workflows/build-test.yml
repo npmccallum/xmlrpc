@@ -1,0 +1,63 @@
+name: Build and Package Test
+
+on:
+  push:
+    branches:
+      - main
+      - master
+    tags:
+      - "v*.*.*"
+  pull_request:
+    branches:
+      - main
+      - master
+
+jobs:
+  test-package:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install vsce
+        run: npm install -g @vscode/vsce
+
+      - name: Package extension
+        run: vsce package
+
+      - name: Verify package contents
+        run: |
+          # Extract and verify the VSIX contains node_modules
+          unzip -l *.vsix | grep -q "node_modules/@xmldom/xmldom" || (echo "ERROR: @xmldom/xmldom dependency not found in package" && exit 1)
+          echo "✅ Dependencies correctly included in package"
+
+      - name: Test package size
+        run: |
+          # Check that package size is reasonable (under 5MB)
+          SIZE=$(du -k *.vsix | cut -f1)
+          if [ $SIZE -gt 5120 ]; then
+            echo "WARNING: Package size is larger than expected: ${SIZE}KB"
+          else
+            echo "✅ Package size is reasonable: ${SIZE}KB"
+          fi
+
+      - name: Upload package artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: vsix-package-node-${{ matrix.node-version }}
+          path: "*.vsix"
+          retention-days: 7
