@@ -23,7 +23,7 @@ xml2rfc-specific errors.
 
 1. Open an RFC XML file in VS Code
 2. xml2rfc warnings and errors appear automatically in the Problems panel
-3. Click the preview button (📄 icon) in the editor title bar
+3. Click the preview button in the editor title bar
 4. HTML preview opens in a side panel
 
 ## Troubleshooting
